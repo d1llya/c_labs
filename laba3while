@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    double x, y, h, q;
+    int i;
+    printf("Введите шаг h\n");
+    scanf("%lf", &h);
+    printf("\tx\t\t f(x)\n");
+    printf("\t_____________________________\n");
+    q = 3.00 / h;
+    i=0;
+    while (i <= q)
+    {
+        x = i * h;
+        if (x >= 0.0 && x <= 1.0)
+              y = cos(x + x * x * x);
+        else
+        y = exp(-x * -x) - x * x + 2*x;
+        printf("\tx %.6f\t f(x) %.4f\n", x, y);
+        i++;
+    }
+    return 0;
+}
