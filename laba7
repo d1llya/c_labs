@@ -1,1 +1,64 @@
-ehhehe
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#include<unistd.h>
+
+#define MAX 10
+int main()
+{
+int sum,n,m,**matrix;
+printf("Enter size of matrix[n,m]");
+printf("\nEnter n = ");
+scanf("%d",&n);
+printf("\nEnter m = ");
+scanf("%d",&m);
+matrix=(int**)malloc(n*sizeof(int*));
+if(matrix)
+{
+for(int i = 0; i < n; i++)
+{
+matrix[i]=(int*)malloc(m*sizeof(int));
+if(!matrix[i])
+{
+printf("\nError. Column not created.");
+exit(1);
+}
+}
+srand(time(NULL));
+printf("\nMatrix[%d,%d]:\n",n,m);
+for(int i = 0; i < n; i++)
+{
+for(int j = 0; j < m; j++)
+{
+matrix[i][j]=rand()%MAX;
+sum+=matrix[i][j];
+printf("%4d ",matrix[i][j]);
+}
+printf("| ");
+for(int i = 0; i < n; i++)
+{
+    sum=0;
+}
+for(int j = 0; j < n; j++)
+{
+    sum+=matrix[i][j];
+}
+printf("%.1f \n",(float)sum/m);
+}
+}
+for(int i = 0; i < m; i++)
+printf("_____");
+printf("\n");
+for(int j = 0; j < m; j++)
+{
+sum=0;
+for(int i = 0; i < n; i++)
+{
+sum+=matrix[i][j];
+}
+printf(" %.1f ",(float)sum/n);
+}
+for(int i = 0; i < n; i++)
+free(matrix[i]);
+free(matrix);
+}
