@@ -1,1 +1,38 @@
-потом как нить
+#include <stdio.h>
+#include <math.h>
+
+double function(unsigned int n)
+{
+    double s=0.0, h, c;
+    int i;
+    h = 5.00 / n;
+    for(i = 0; i < n; i++)
+    {
+        c = h * (i * 0.5);
+        if (h * i > 1.0)
+            s+=cos(c + c * c * c);
+        else
+            s+=exp(-c * -c) - c * c + 2*c;
+    }
+    return s*h;
+}
+int main()
+{
+    double E, d, m;
+    unsigned long int n;
+    printf("n=");
+    scanf("%lu", &n);
+    printf("E=");
+    scanf("%lf", &E);
+    do
+    {
+        m = function(n);
+        d = fabs(m - function(2*n)) / 3;
+        printf("m=%lf\t d=%.8lf\t n=%lu\n", m, d, n);
+        (n *=2);
+    }
+    while(d >= E);
+        printf("s=%.8lf \n", m);
+        printf("E=%.8lf \n", d);
+    return 0;
+}
