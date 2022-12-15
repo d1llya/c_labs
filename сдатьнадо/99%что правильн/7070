@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
+
+void fill(int n, int m, int matrix[n][m])
+{
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 0; j < m; j++)
+            printf("%4d", matrix[i][j] = rand () % 101 - 50);
+        printf("\n");
+}
+}
+
+void str(int n, int m, int matrix[n][m])
+{ 
+    for(int i = 0; i < n; i++)
+    {
+       int sum = 0;
+    {
+    for(int j = 0; j < n; j++)
+    {
+        sum+=matrix[i][j];
+        printf("| ");
+        printf("%.1f \n",(float)sum/m);
+    }
+    }
+    }
+}
+
+void column(int n, int m, int matrix[n][m], int sum)
+{
+    for(int j = 0; j < m; j++)
+    {
+        int sum=0;
+    {
+    for(int i = 0; i < n; i++)
+    {
+        sum+=matrix[i][j];
+    }
+    }
+    printf(" %.1f ",(float)sum/n);  
+    printf("_____");
+    printf("\n");
+    }
+}
+
+int main()
+{
+    srand(time(NULL));
+    int n,m;
+    printf("Enter size of matrix[n,m]");
+    printf("\nEnter n = ");
+    scanf("%d",&n);
+    printf("\nEnter m = ");
+    scanf("%d",&m);
+    int matrix[n][m];
+    int sum = 0;
+    fill(n, m, matrix);
+    str(n,m,matrix);
+    column(n,m,matrix,sum);
+}
