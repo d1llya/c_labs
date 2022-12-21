@@ -3,7 +3,7 @@
 
 void revStr(char *start, char *end)
 {
-    for (char *st = start, *en = end - 1; li < ri; ++li, --ri)
+    for (char *st = start, *en = end - 1; st < en; ++st, --en)
     {
         char ch = *st;
         *st = *en;
